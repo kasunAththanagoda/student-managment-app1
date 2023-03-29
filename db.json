@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "fname": "kasun",
+      "lname": "sahna",
+      "course": "SE",
+      "gender": "Male",
+      "phone": "4543",
+      "address": "23423",
+      "email": "kasunaththanagoda@gmail.com",
+      "id": 1
+    },
+    {
+      "fname": "kasun",
+      "lname": "aththanagoda",
+      "course": "SE",
+      "gender": "Male",
+      "phone": "1234",
+      "address": "llllllllllllllllll",
+      "email": "kasunaththanagoda@gmail.com",
+      "id": 5
+    },
+    {
+      "fname": "sahan",
+      "lname": "perera",
+      "course": "QA",
+      "gender": "Male",
+      "phone": "5435",
+      "address": "llllllllllllllllll345345435",
+      "email": "kasunaththanagoda@gmail.com",
+      "id": 6
+    },
+    {
+      "fname": "sahan",
+      "lname": "perera",
+      "course": "QA",
+      "gender": "Male",
+      "phone": "5435",
+      "address": "llllllllllllllllll345345435",
+      "email": "kasunaththanagoda@gmail.com",
+      "id": 7
+    }
+  ]
+}
