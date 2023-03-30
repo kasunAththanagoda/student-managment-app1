@@ -1,86 +1,90 @@
 <template>
   <div>
-    <form @submit.prevent="chooseBetween">
-      <div class="container">
-        <center><h1>Student Registeration Form</h1></center>
-        <hr />
-        <label> Firstname </label>
-        <input
-          type="text"
-          name="firstname"
-          placeholder="Firstname"
-          size="15"
-          required
-          v-model="firstname"
-        />
+    <template>
+  <v-form @submit.prevent="chooseBetween">
+    <v-container>
+      <v-toolbar color="primary" dark>
+        <v-toolbar-title>Student Registration Form</v-toolbar-title>
+      </v-toolbar>
+      <hr />
 
-        <label> Lastname: </label>
-        <input
-          type="text"
-          name="lastname"
-          placeholder="Lastname"
-          size="15"
-          required
-          v-model="lastname"
-        />
+      <v-row>
+        <v-col cols="12" md="6">
+          <v-text-field
+            label="Firstname"
+            name="firstname"
+            required
+            v-model="firstname"
+          ></v-text-field>
+        </v-col>
 
-        <div>
-          <label> Course : </label>
+        <v-col cols="12" md="6">
+          <v-text-field
+            label="Lastname"
+            name="lastname"
+            required
+            v-model="lastname"
+          ></v-text-field>
+        </v-col>
 
+        <v-col cols="12">
+          <label>Course:</label>
           <select v-model="course">
             <option disabled value="">Course</option>
             <option value="SE">SE</option>
             <option value="QA">QA</option>
             <option value="BA">BA</option>
           </select>
-        </div>
-        <div>
-          <label> Gender : </label><br />
-          <input
-            type="radio"
-            value="Male"
-            name="gender"
-            checked
-            v-model="gender"
-          />
+        </v-col>
+
+        <v-col cols="12">
+          <label>Gender:</label><br />
+          <input type="radio" value="Male" name="gender" checked v-model="gender" />
           Male
           <input type="radio" value="Female" name="gender" v-model="gender" />
           Female
           <input type="radio" value="Other" name="gender" v-model="gender" />
           Other
-        </div>
-        <label> Phone : </label>
-        <input
-          type="text"
-          name="phone"
-          placeholder="phone no."
-          size="10"
-          required
-          v-model="phone"
-        />
+        </v-col>
 
-        Current Address :
-        <textarea
-          cols="80"
-          rows="5"
-          placeholder="Current Address"
-          value="address"
-          required
-          v-model="address"
-        >
-        </textarea>
-        <label for="email"><b>Email</b></label>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          name="email"
-          required
-          v-model="email"
-        />
+        <v-col cols="12" md="6">
+          <v-text-field
+            label="Phone"
+            name="phone"
+            required
+            v-model="phone"
+          ></v-text-field>
+        </v-col>
 
-        <button type="submit" class="registerbtn">Register</button>
-      </div>
-    </form>
+        <v-col cols="12">
+          <label>Current Address:</label>
+          <textarea
+            cols="50"
+            rows="3"
+            placeholder="Current Address"
+            required
+            v-model="address"
+          >
+          </textarea>
+        </v-col>
+
+        <v-col cols="12">
+          <v-text-field
+            label="Email"
+            name="email"
+            required
+            v-model="email"
+          ></v-text-field>
+        </v-col>
+
+        <v-col cols="12">
+          <v-btn color="primary" dark @click="chooseBetween">Register</v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-form>
+</template>
+
     <DialogAlert
       ref="dialog"
       :operation="operation"
@@ -230,9 +234,9 @@ export default {
 
 <style scoped>
 form {
-  max-width: 420px;
+  max-width: 700px;
   margin: 30px auto;
-  background: rgb(211, 208, 208);
+  background: rgb(236, 235, 235);
 }
 .container {
   padding: 50px;

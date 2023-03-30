@@ -10,70 +10,50 @@
             </router-link>
           </div>
         </td>
-
-
-        <!-- <td>
-          <v-btn class="red" @click="getData">show student Details</v-btn>
-        </td> -->
       </table>
     </div>
 
+
+   
+
+
+
+
+
  
 
-    <!-- <v-data-table :headers="headers" :items="users" :search="search" class="elevation-1">
-    <template v-slot:item="{ item }">
-      <v-list-item-content>
-        <v-list-item-title class="text-h6">{{ item.fname }}</v-list-item-title>
-        <v-list-item-subtitle>{{ item.lmail }}</v-list-item-subtitle>
-        <v-list-item-subtitle>{{ item.email }}</v-list-item-subtitle>
-        <v-list-item-subtitle>{{ item.course }}</v-list-item-subtitle>
-        <v-list-item-subtitle>{{ item.gender }}</v-list-item-subtitle>
-        <v-list-item-subtitle>{{ item.address }}</v-list-item-subtitle>
-        <v-list-item-subtitle>{{ item.phone }}</v-list-item-subtitle>
-      </v-list-item-content>
-
-      <td>{{ item.fname }}</td>
-      <td>{{ item.lname }}</td>
-      <td>{{ item.email }}</td>
-      <td>{{ item.course }}</td>
-       <td>{{ item.gender }}</td> 
-       <td>{{ item.address }}</td> 
-      <td>{{ item.phone }}</td>
-
-
-     
-    </template>
-  </v-data-table> -->
+    
 
     <template>
-      <v-table fixed-header height="300px" v-show="showTable">
-        <thead>
-          <tr>
-            <th class="text-left" width="100px">Id</th>
-            <th class="text-left" width="150px">FirstName</th>
-            <th class="text-left" width="170px">Lastname</th>
-            <th class="text-left" width="280px">Email</th>
-            <th class="text-left" width="100px">Course</th>
-            <th class="text-left" width="170px">tel</th>
-            <th class="text-left" width="170px">update/remove</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in users" :key="item.id" height="50px">
-            <td>{{ item.id }}</td>
-            <td>{{ item.fname }}</td>
-            <td>{{ item.lname }}</td>
-            <td>{{ item.email }}</td>
-            <td>{{ item.course }}</td>
-            <td>{{ item.phone }}</td>
-            <td>
-              <v-icon  class="mr-2" @click="editUser(item.id)">mdi-pencil</v-icon>
-              <v-icon @click="deleteUser(item.id)">mdi-delete</v-icon>
-            </td>
-          </tr>
-        </tbody>
-      </v-table>
-    </template>
+  <v-table fixed-header height="300px" v-show="showTable" style="width: 100%;">
+    <thead style="background-color: #f2f2f2;">
+      <tr>
+        <th class="text-left" width="100px">Id</th>
+        <th class="text-left" width="150px">FirstName</th>
+        <th class="text-left" width="170px">Lastname</th>
+        <th class="text-left" width="280px">Email</th>
+        <th class="text-left" width="100px">Course</th>
+        <th class="text-left" width="170px">tel</th>
+        <th class="text-left" width="170px">update/remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in users" :key="item.id" height="50px">
+        <td>{{ item.id }}</td>
+        <td>{{ item.fname }}</td>
+        <td>{{ item.lname }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.course }}</td>
+        <td>{{ item.phone }}</td>
+        <td>
+          <v-icon  class="mr-2" @click="editUser(item.id)">mdi-pencil</v-icon>
+          <v-icon @click="deleteUser(item.id)">mdi-delete</v-icon>
+        </td>
+      </tr>
+    </tbody>
+  </v-table>
+</template>
+
   </div>
 </template>
 
@@ -163,4 +143,16 @@ export default {
 .manTable {
   padding: 100px;
 }
+
+th, td {
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #ddd;
+    }
 </style>
