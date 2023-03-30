@@ -14,6 +14,7 @@
             label="Firstname"
             name="firstname"
             required
+            :rules="[rules.required, rules.alpha]"
             v-model="firstname"
           ></v-text-field>
         </v-col>
@@ -23,6 +24,7 @@
             label="Lastname"
             name="lastname"
             required
+            :rules="[rules.required, rules.alpha]"
             v-model="lastname"
           ></v-text-field>
         </v-col>
@@ -53,6 +55,7 @@
             name="phone"
             required
             v-model="phone"
+            :rules="phoneRules"
           ></v-text-field>
         </v-col>
 
@@ -74,6 +77,7 @@
             name="email"
             required
             v-model="email"
+            :rules="[emailRules]"
           ></v-text-field>
         </v-col>
 
@@ -118,6 +122,17 @@ export default {
       datas: [],
       operation: "sucessfull",
       description: "operation sucessfull",
+
+      phoneRules: [
+      v => !!v || 'Phone is required',
+      v => /^[0-9]+$/.test(v) || 'Phone must be numeric',
+      v => v.length == 10 || 'Phone must be 10 digits'
+      
+    ],
+    rules: {
+        required: (value) => !!value || 'Required.',
+        alpha: (value) => /^[A-Za-z]+$/.test(value) || 'Only alphabets are allowed.',
+      },
     };
   },
   methods: {
@@ -222,6 +237,12 @@ export default {
             console.log(error);
           });
     },
+    emailRules: (value) => {
+    if (!value) return "Email is required";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+      return "Email must be valid";
+    return true;
+  },
   },
 
   mounted() {
@@ -240,7 +261,7 @@ form {
 }
 .container {
   padding: 50px;
-  /* background-color: rgb(63, 64, 65);   */
+ 
 }
 
 input[type="text"],
@@ -265,17 +286,6 @@ hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
-.registerbtn {
-  background-color: #889e89;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-.registerbtn:hover {
-  opacity: 1;
-}
+
+
 </style>
