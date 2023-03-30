@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import StudentDetails from '../views/StudentDetails.vue'
-import AddNewStudent from '@/components/AddNewStudent.vue'
+import AddNewStudent from '@/views/AddNewStudent.vue'
 
 Vue.use(VueRouter)
 

@@ -7,6 +7,7 @@
                 <!-- <v-spacer></v-spacer> -->
                 <span class="ml-4 black--text"><router-link :to="{name:'about'}" class="nav-link black--text">about</router-link></span>
             <span class="ml-4"><router-link :to="{name:'studentDetails'}" class="nav-link black--text">student details</router-link></span>
+            <span class="ml-4"><router-link :to="{name:'addNewStudent'}" class="nav-link black--text">add students</router-link></span>
             </v-toolbar-title>
             
         </v-app-bar>

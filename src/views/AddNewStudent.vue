@@ -81,17 +81,21 @@
         <button type="submit" class="registerbtn">Register</button>
       </div>
     </form>
-    <DialogAlert ref="dialog" :operation="operation" :description="description"></DialogAlert>
+    <DialogAlert
+      ref="dialog"
+      :operation="operation"
+      :description="description"
+    ></DialogAlert>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import DialogAlert from "./DialogAlert.vue";
+import DialogAlert from '../components/DialogAlert.vue';
 
 export default {
-  components:{
-    DialogAlert
+  components: {
+    DialogAlert,
   },
 
   data() {
@@ -106,55 +110,53 @@ export default {
 
       id: "",
       users: [],
-      toogleUpdate:false,
-      datas:[],
-      operation:'sucessfull',
-      description:'operation sucessfull'
-      
+      toogleUpdate: false,
+      datas: [],
+      operation: "sucessfull",
+      description: "operation sucessfull",
     };
   },
   methods: {
     openDialog() {
       this.$refs.dialog.dialogVisible = true;
     },
-    chooseBetween(){
-       if(this.toogleUpdate){
-         this.register();
-         console.log("register data selected ")
-    }
-      else{
+    chooseBetween() {
+      if (this.toogleUpdate) {
+        this.register();
+        console.log("register data selected ");
+      } else {
         this.update();
-        console.log("update data selected ")
-       }
+        console.log("update data selected ");
+      }
     },
 
-    update(){
-      console.log("update ")
-      const data={
-          fname:this.firstname,
-          lname:this.lastname,
-          course:this.course,
-          gender:this.gender,
-          phone:this.phone,
-          address:this.address,
-          email:this.email,
-          id:this.id
+    update() {
+      console.log("update ");
+      const data = {
+        fname: this.firstname,
+        lname: this.lastname,
+        course: this.course,
+        gender: this.gender,
+        phone: this.phone,
+        address: this.address,
+        email: this.email,
+        id: this.id,
       };
       //console.log(data.fname)
 
-    axios.put(`http://localhost:3000/users/${data.id}`, data)
-      .then(response => {
-        console.log(response.data);
-        // alert("user updated successfully")
-       this.openDialog()
-      })
-      .catch(error => {
-        if (error.response.status === 404) {
-      console.log('Requested resource not found.')
-    }
-        console.log(error);
-      });
-  
+      axios
+        .put(`http://localhost:3000/users/${data.id}`, data)
+        .then((response) => {
+          console.log(response.data);
+          // alert("user updated successfully")
+          this.openDialog();
+        })
+        .catch((error) => {
+          if (error.response.status === 404) {
+            console.log("Requested resource not found.");
+          }
+          console.log(error);
+        });
     },
 
     register() {
@@ -169,16 +171,17 @@ export default {
         address: this.address,
         email: this.email,
       };
-      console.log(users.fname)
+      console.log(users.fname);
 
       axios
         .post("http://localhost:3000/users", users)
         .then((response) => {
-          console.log("Data was successfully written to the JSON Server endpoint!");
+          console.log(
+            "Data was successfully written to the JSON Server endpoint!"
+          );
           //this.dialog=true
-          console.log(response.data);// The data that was written to the endpoint
-          this.openDialog()
-          
+          console.log(response.data); // The data that was written to the endpoint
+          this.openDialog();
 
           this.firstname = "";
           this.lastname = "";
@@ -197,23 +200,23 @@ export default {
     },
 
     getUserById(id) {
-      this.toogleUpdate=!this.toogleUpdate,
-      axios
-        .get(`http://localhost:3000/users/${id}`)
-        .then((response) => {
-          const user = response.data;
-          this.users.push(user);
-          this.firstname = user.fname;
-          this.lastname = user.lname;
-          this.course = user.course;
-          this.gender = user.gender;
-          this.phone = user.phone;
-          this.address = user.address;
-          this.email = user.email;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      (this.toogleUpdate = !this.toogleUpdate),
+        axios
+          .get(`http://localhost:3000/users/${id}`)
+          .then((response) => {
+            const user = response.data;
+            this.users.push(user);
+            this.firstname = user.fname;
+            this.lastname = user.lname;
+            this.course = user.course;
+            this.gender = user.gender;
+            this.phone = user.phone;
+            this.address = user.address;
+            this.email = user.email;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     },
   },
 
