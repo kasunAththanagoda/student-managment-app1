@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="red text-center">Student Details</h1>
+    <h1 class="indigo lighten-2 text-center">Student Details</h1>
     <div class="manTable">
       <table width="100%">
         <td>
@@ -11,11 +11,14 @@
           </div>
         </td>
 
+
         <!-- <td>
           <v-btn class="red" @click="getData">show student Details</v-btn>
         </td> -->
       </table>
     </div>
+
+ 
 
     <!-- <v-data-table :headers="headers" :items="users" :search="search" class="elevation-1">
     <template v-slot:item="{ item }">
@@ -64,9 +67,7 @@
             <td>{{ item.course }}</td>
             <td>{{ item.phone }}</td>
             <td>
-              <v-icon  class="mr-2" @click="editUser(item.id)"
-                >mdi-pencil</v-icon
-              >
+              <v-icon  class="mr-2" @click="editUser(item.id)">mdi-pencil</v-icon>
               <v-icon @click="deleteUser(item.id)">mdi-delete</v-icon>
             </td>
           </tr>

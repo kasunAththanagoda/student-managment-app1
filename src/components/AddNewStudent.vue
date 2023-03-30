@@ -81,14 +81,19 @@
         <button type="submit" class="registerbtn">Register</button>
       </div>
     </form>
-    <!-- <p>{{firstname}}--{{ lastname }}</p> -->
+    <DialogAlert ref="dialog" :operation="operation" :description="description"></DialogAlert>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import DialogAlert from "./DialogAlert.vue";
 
 export default {
+  components:{
+    DialogAlert
+  },
+
   data() {
     return {
       firstname: "",
@@ -103,9 +108,15 @@ export default {
       users: [],
       toogleUpdate:false,
       datas:[],
+      operation:'sucessfull',
+      description:'operation sucessfull'
+      
     };
   },
   methods: {
+    openDialog() {
+      this.$refs.dialog.dialogVisible = true;
+    },
     chooseBetween(){
        if(this.toogleUpdate){
          this.register();
@@ -134,7 +145,8 @@ export default {
     axios.put(`http://localhost:3000/users/${data.id}`, data)
       .then(response => {
         console.log(response.data);
-        alert("user updated successfully")
+        // alert("user updated successfully")
+       this.openDialog()
       })
       .catch(error => {
         if (error.response.status === 404) {
@@ -162,10 +174,11 @@ export default {
       axios
         .post("http://localhost:3000/users", users)
         .then((response) => {
-          console.log(
-            "Data was successfully written to the JSON Server endpoint!"
-          );
-          console.log(response.data); // The data that was written to the endpoint
+          console.log("Data was successfully written to the JSON Server endpoint!");
+          //this.dialog=true
+          console.log(response.data);// The data that was written to the endpoint
+          this.openDialog()
+          
 
           this.firstname = "";
           this.lastname = "";
